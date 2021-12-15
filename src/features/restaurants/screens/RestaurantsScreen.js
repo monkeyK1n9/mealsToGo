@@ -1,16 +1,15 @@
-import React from "react"
+import React, {useContext, useState} from "react"
 import styled from "styled-components/native"
-import {View, FlatList} from 'react-native'
-import { Searchbar } from "react-native-paper"
+import { FlatList, TouchableOpacity} from 'react-native'
+import { ActivityIndicator } from "react-native-paper"
 import {RestaurantInfoCard} from "../components/RestaurantInfoCard"
 import { SafeAreaViewSection } from "../components/Utility/SafeAreaViewSection"
 
-const SearchbarSection = styled(View)`
-    padding-top: ${props => props.theme.space[3]};
-    padding-left: ${props => props.theme.space[3]};
-    padding-right: ${props => props.theme.space[3]};
-    padding-bottom: ${props => props.theme.space[3]};
-`
+import { RestaurantsContext } from "../../../services/restaurants/RestaurantContext"
+import { Search } from "../components/SearchComponent"
+import { FavoriteBar } from "../../../components/Favorites/FavoriteBar"
+import { FavoritesContext } from "../../../services/favorites/FavoritesContext"
+
 const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle : {
         paddingTop: 0,
@@ -20,19 +19,32 @@ const RestaurantList = styled(FlatList).attrs({
     }
 })``
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({navigation}) => {
+    const {isLoading, error, restaurants} = useContext(RestaurantsContext)
+    const [isToggled, setIsToggled] = useState(false)
+    const {favorites} = useContext(FavoritesContext)
+
     return (
         <SafeAreaViewSection>
-            <SearchbarSection>
-                <Searchbar 
-                    placeholder = "Search"
-                ></Searchbar>
-            </SearchbarSection>
-            <RestaurantList
-                data={[{name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}, {name: 10}]}
-                renderItem={() =><RestaurantInfoCard/>} 
-                keyExtractor={(item) => item.name}
-            />
+           <Search 
+            isFavoriteToggle={isToggled}
+            onFavoriteToggle={()=>setIsToggled(!isToggled)} />
+
+            {isToggled && <FavoriteBar favorites={favorites} onNavigate={navigation.navigate} />}
+
+            {isLoading ? 
+                (<ActivityIndicator animating={true} color="red" size="large" style={{flex:1}}/>
+                ):(
+                <RestaurantList
+                data={restaurants}
+                renderItem={({item}) =>{
+                    return (
+                    <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail", {restaurant: item})}>
+                        <RestaurantInfoCard restaurant={item} />
+                    </TouchableOpacity>
+                )}} 
+                keyExtractor={(item) => item.name}/>)
+            }
         </SafeAreaViewSection>
     )
 }

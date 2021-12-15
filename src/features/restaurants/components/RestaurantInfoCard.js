@@ -6,22 +6,24 @@ import open from "../../../../assets/open"
 import {Spacer} from "./spacer/SpacerComponent"
 import {Text} from "../components/typography/TextComponent"
 import {RestaurantCard, RestaurantCardCover, Info, Note, OpenStatus, Address, Rating, Icon} from "./RestaurantInfoStyles"
+import { Favorite } from "../../../components/Favorites/FavoriteComponent"
 
 export const RestaurantInfoCard =({restaurant={}}) => {
     const {
         name = "Resto Mami Poisson",
         icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         photos =["https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg"],
-        address="Nkomkana, Yaounde",
+        vicinity="Nkomkana, Yaounde",
         isOpenNow = true,
         rating = 4,
         isClosedTemporarily = true
     } = restaurant
-
+    
     const ratingArray = Array.from(new Array(Math.floor(rating)))
     
     return (
         <RestaurantCard elevation = {5}>
+            <Favorite restaurant={restaurant} />
             <RestaurantCardCover key={name} source={{uri: photos[0]}}/>
             <Info>
                 <Text variant="label">{name}</Text>
@@ -47,7 +49,7 @@ export const RestaurantInfoCard =({restaurant={}}) => {
                         </Spacer>
                     </OpenStatus>
                 </Note>
-                <Address>{address}</Address>
+                <Address>{vicinity}</Address>
             </Info>
         </RestaurantCard>
     )
