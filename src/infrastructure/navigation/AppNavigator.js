@@ -1,6 +1,5 @@
 import React from "react"
 import {Text} from 'react-native';
-import {NavigationContainer} from "@react-navigation/native"
 import { RestaurantsScreen } from "../../features/restaurants/screens/RestaurantsScreen"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -43,24 +42,23 @@ const SettingPage = ()=> {
 const Tab = createBottomTabNavigator()
 
 export const AppNavigator = () => {
-    return (
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({route}) => ({
-                    tabBarIcon: ({focused, color, size}) => {
-                        let iconName = undefined
+    return (            
+        <Tab.Navigator
+            screenOptions={({route}) => ({
+                tabBarIcon: ({focused, color, size}) => {
+                    let iconName = undefined
 
-                        if (route.name==="Restaurant") {
-                            iconName = focused ? 
-                                "restaurant" : "restaurant-outline"
-                        } else if (route.name==="Map") {
-                            iconName = focused ?
-                                "map" : "map-outline"
-                        } else if (route.name==="Setting") {
-                            iconName = focused ? 
-                            "settings" : "settings-outline"
-                        }
-                        return <Ionicons name={iconName} size={size} color={color} />
+                    if (route.name==="Restaurant") {
+                        iconName = focused ? 
+                            "restaurant" : "restaurant-outline"
+                    } else if (route.name==="Map") {
+                        iconName = focused ?
+                            "map" : "map-outline"
+                    } else if (route.name==="Setting") {
+                        iconName = focused ? 
+                        "settings" : "settings-outline"
+                    }
+                    return <Ionicons name={iconName} size={size} color={color} />
                     },
                     tabBarActiveTintColor: theme.colors.brand.primary,
                     tabBarInactiveTintColor: theme.colors.brand.secondary
@@ -68,7 +66,7 @@ export const AppNavigator = () => {
                 <Tab.Screen name="Restaurant" component={RestaurantStackScreen} options={{ headerShown: false }}/>
                 <Tab.Screen name="Map" component={MapStackScreen} options={{ headerShown: false }}/>
                 <Tab.Screen name="Setting" component={SettingStackScreen}/>
-            </Tab.Navigator>
-        </NavigationContainer>
+        </Tab.Navigator>
+
     )
 }
