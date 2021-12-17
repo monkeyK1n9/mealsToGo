@@ -10,7 +10,7 @@ import { Search } from "../components/SearchComponent"
 import { FavoriteBar } from "../../../components/Favorites/FavoriteBar"
 import { FavoritesContext } from "../../../services/favorites/FavoritesContext"
 
-const RestaurantList = styled(FlatList).attrs({
+export const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle : {
         paddingTop: 0,
         paddingBottom: 8,

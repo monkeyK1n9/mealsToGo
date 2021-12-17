@@ -1,13 +1,12 @@
 import { initializeApp, getApps } from "@firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "@firebase/auth";
 
 export const loginRequest = (email, password) => {
     const auth = getAuth()
-    signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
+    return signInWithEmailAndPassword(auth, email, password)
+}
 
-    })
-    .catch(() => {
-
-    })
+export const registerRequest = (email, password) => {
+    const auth = getAuth()
+    return createUserWithEmailAndPassword(auth, email, password)
 }

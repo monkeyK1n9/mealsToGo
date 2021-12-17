@@ -26,12 +26,20 @@ const label = (theme) => `
     font-size: ${theme.fontSizes.body}
     font-weight: ${theme.fontWeights.medium}
 `
+const appName = (theme) => `
+    font-size: 48px
+`
+const title = (theme) => `
+    font-size: 28px
+`
 const variants = {
     body,
     label,
     caption,
     error,
-    hint
+    hint,
+    appName, 
+    title
 }
 
 export const Text = styled.Text`

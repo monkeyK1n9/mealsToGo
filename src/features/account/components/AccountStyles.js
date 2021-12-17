@@ -41,3 +41,11 @@ export const LoginButton = styled(Button).attrs({
     padding: ${props => props.theme.space[2]};
     width: 250px
 `
+
+export const AnimationWrapper = styled(View)`
+    position: absolute;
+    padding: ${props => props.theme.space[2]};
+    width: 100%;
+    height: 45%;
+    top: 15px
+`
