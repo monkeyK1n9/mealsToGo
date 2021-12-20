@@ -10,6 +10,8 @@ import { Search } from "../components/SearchComponent"
 import { FavoriteBar } from "../../../components/Favorites/FavoriteBar"
 import { FavoritesContext } from "../../../services/favorites/FavoritesContext"
 
+import { FadeInView } from "../../../components/animations/FadeAnimation"
+
 export const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle : {
         paddingTop: 0,
@@ -35,12 +37,15 @@ export const RestaurantsScreen = ({navigation}) => {
             {isLoading ? 
                 (<ActivityIndicator animating={true} color="red" size="large" style={{flex:1}}/>
                 ):(
+                
                 <RestaurantList
                 data={restaurants}
                 renderItem={({item}) =>{
                     return (
                     <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail", {restaurant: item})}>
-                        <RestaurantInfoCard restaurant={item} />
+                        <FadeInView>
+                            <RestaurantInfoCard restaurant={item} />
+                        </FadeInView>
                     </TouchableOpacity>
                 )}} 
                 keyExtractor={(item) => item.name}/>)
