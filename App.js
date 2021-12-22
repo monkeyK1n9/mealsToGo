@@ -15,13 +15,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyA3I9JxJpRgQv2YgLyfMIE1G2uLLeGuLV0",
-  authDomain: "mealstogo-9817d.firebaseapp.com",
-  projectId: "mealstogo-9817d",
-  storageBucket: "mealstogo-9817d.appspot.com",
-  messagingSenderId: "1037996718723",
-  appId: "1:1037996718723:web:0e89d2f27a67a8eaa139b6",
-  measurementId: "G-RYMMH75CP3"
+   "YOUR APP CONFIG HERE"
 };
 
 if(getApps().length < 1){
