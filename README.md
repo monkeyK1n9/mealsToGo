@@ -4,7 +4,7 @@ This app proposes restaurants and their menu. The user can look for restaurants 
 
 ## Install
 1.  Download the package as zip or clone.
-2.  Add an apiKey in the app.json file in the `android.config.googleMaps.apiKey`
+2.  Add an apiKey in the app.json file in the `android.config.googleMaps.apiKey`. If you don't know how to create a key, check the link <a href="https://docs.expo.dev/versions/latest/sdk/map-view/#configuration">Configure my api key</a>. 
 3.  Run the command `eas build -p android --profile preview` in the terminal
 
 ## Registration
