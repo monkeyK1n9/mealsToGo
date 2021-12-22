@@ -33,7 +33,7 @@
       "package": "com.monkeyk1n9.mealsToGo",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyDINC99pKGyXZFT-kz3LYpF4bscPo-B2jw"
+          "apiKey": "API KEY HERE"
         }
       }
     },
