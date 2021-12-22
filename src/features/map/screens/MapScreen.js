@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react"
 import {Text} from "react-native"
-import MapView from "react-native-maps"
+import MapView, {PROVIDER_GOOGLE} from "react-native-maps"
 import styled from "styled-components/native"
 import { LocationContext } from "../../../services/location/LocationContext"
 import { RestaurantsContext } from "../../../services/restaurants/RestaurantContext"
@@ -46,6 +46,7 @@ export const MapScreen = ({navigation}) => {
         <>
             <Search />
             <Map
+                provider = {PROVIDER_GOOGLE}
                 region = {{
                     latitude: lat,
                     longitude: lng,
